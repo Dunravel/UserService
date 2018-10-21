@@ -9,11 +9,21 @@ class Person {
         this.lastName = lastName;
     }
 
-    String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    String getLastName() {
+    public String getLastName() {
         return lastName;
+    }
+
+   // @Override
+    public boolean equals(Person obj) {
+        if(this.firstName.equals(obj.getFirstName()) && this.lastName.equals(obj.getLastName())) {
+            return true;
+        }else {
+            return false;
+        }
+
     }
 }
