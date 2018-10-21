@@ -10,6 +10,6 @@ class UserService {
     }
 
     void add(String login, String name, String lastName) {
-        users.put("login",new Person("name","lastName"));
+        users.put(login,new Person(name,lastName));
     }
 }
