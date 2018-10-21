@@ -23,5 +23,8 @@ public class UserServiceTest {
 
         //then
         Assert.assertEquals(1, users.size());
+        Assert.assertTrue(users.containsKey(login));
+        Assert.assertTrue(users.containsValue(new Person(firstName,lastName)));
     }
+
 }
