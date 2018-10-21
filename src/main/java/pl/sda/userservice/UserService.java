@@ -9,7 +9,7 @@ class UserService {
         this.users = users;
     }
 
-    void add(String login, String firstName, String lastName) {
-        users.put("test",new Person("tt","tt"));
+    void add(String login, String name, String lastName) {
+        users.put("login",new Person("name","lastName"));
     }
 }
