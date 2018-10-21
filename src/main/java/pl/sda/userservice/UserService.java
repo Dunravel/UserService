@@ -10,5 +10,6 @@ class UserService {
     }
 
     void add(String login, String firstName, String lastName) {
+        users.put("",new Person());
     }
 }
