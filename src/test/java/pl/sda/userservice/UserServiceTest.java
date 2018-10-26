@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class UserServiceTest {
 
-    private static final String LOGIN = "login";
-    private static final String FIRST_NAME = "name";
-    private static final String LAST_NAME = "last name";
+    private static final String LOGIN = "myLogin";
+    private static final String FIRST_NAME = "myName";
+    private static final String LAST_NAME = "myLast name";
     private Map<String, Person> users;
     private UserService userService;
     private Validator validator;
@@ -44,7 +44,7 @@ public class UserServiceTest {
 
         //then
         Assert.assertEquals(1, users.size());
-        Assert.assertTrue(users.containsKey("login"));
+        Assert.assertTrue(users.containsKey("myLogin"));
         Assert.assertTrue(new Person(FIRST_NAME, LAST_NAME).equals(users.get(LOGIN)));
     }
 
@@ -66,6 +66,7 @@ public class UserServiceTest {
     @Test
     public void shouldUpdateChangePersonDataForGivenLogin() {
         // given
+        givenLoginIsValid();
         userService.add(LOGIN,"test","test");
 
         //when

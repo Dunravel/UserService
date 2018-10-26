@@ -29,6 +29,9 @@ class UserService {
     }
 
     void update(String login, String firstName, String lastName) {
+        if(!users.containsKey(login)){
+            throw new LoginDoesNotExistException(login);
+        }
         users.put(login,new Person(firstName,lastName));
     }
 
