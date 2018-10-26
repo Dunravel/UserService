@@ -85,4 +85,12 @@ public class UserServiceTest {
         //when
         userService.add(LOGIN,FIRST_NAME,LAST_NAME);
     }
+
+    @Test(expected = LoginDoesNotExistException.class)
+    public void shouldReadReturnExceptionWhenLoginDoesNotExists() {
+        //given
+
+        //when
+        userService.read(LOGIN);
+    }
 }
