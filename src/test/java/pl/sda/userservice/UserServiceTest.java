@@ -7,7 +7,6 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 
-import javax.security.auth.login.LoginContext;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,12 +17,14 @@ public class UserServiceTest {
     private static final String LAST_NAME = "last name";
     private Map<String, Person> users;
     private UserService userService;
+    private Validator validator;
 
     @Before
     public void setUp() {
 
         users = new HashMap<>();
-        userService = new UserService(users);
+        validator = Mockito.mock(Validator.class);
+        userService = new UserService(users,validator);
     }
 
     @Test
@@ -106,7 +107,6 @@ public class UserServiceTest {
     @Test
     public void shouldAddNotAddGivenLoginWhenNotValid() {
         //given
-        Validator validator = Mockito.mock(Validator.class);
         BDDMockito.given(validator.loginIsValid(ArgumentMatchers.any())).willReturn(false);
 
         //when

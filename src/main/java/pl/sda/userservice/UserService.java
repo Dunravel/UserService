@@ -5,7 +5,7 @@ import java.util.Map;
 class UserService {
     private Map<String,Person> users;
 
-    UserService(Map<String, Person> users) {
+    UserService(Map<String, Person> users, Validator validator) {
         this.users = users;
     }
 
