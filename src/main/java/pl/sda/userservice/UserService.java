@@ -10,6 +10,9 @@ class UserService {
     }
 
     void add(String login, String name, String lastName) {
+        if(users.containsKey(login)){
+            throw new LoginAlreadyExistsException();
+        }
         users.put(login,new Person(name,lastName));
     }
 
