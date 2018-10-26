@@ -93,4 +93,12 @@ public class UserServiceTest {
         //when
         userService.read(LOGIN);
     }
+
+    @Test(expected = LoginDoesNotExistException.class)
+    public void shouldDeleteReturnExceptionWhenLoginDoesNotExist() {
+        //given
+
+        //when
+        userService.delete(LOGIN);
+    }
 }
