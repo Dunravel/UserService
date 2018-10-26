@@ -1,6 +1,7 @@
 package pl.sda.userservice;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -11,13 +12,19 @@ public class UserServiceTest {
     private static final String LOGIN = "login";
     private static final String FIRST_NAME = "name";
     private static final String LAST_NAME = "last name";
+    private Map<String, Person> users;
+    private UserService userService;
+
+    @Before
+    public void setUp() {
+
+        users = new HashMap<>();
+        userService = new UserService(users);
+    }
 
     @Test
     public void shouldAddLogin(){
         //given
-
-        Map<String,Person> users = new HashMap<>();
-        UserService userService = new UserService(users);
 
         //when
         userService.add(LOGIN, FIRST_NAME, LAST_NAME);
@@ -34,8 +41,6 @@ public class UserServiceTest {
     public void shouldReadReturnCorrectPersonDataForGivenLogin() {
         //given
 
-        Map<String,Person> users = new HashMap<>();
-        UserService userService = new UserService(users);
         userService.add("test","test","test");
         userService.add(LOGIN, FIRST_NAME, LAST_NAME);
         userService.add("test2","test2","test2");
