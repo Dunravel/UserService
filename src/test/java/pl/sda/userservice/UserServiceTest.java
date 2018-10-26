@@ -3,6 +3,9 @@ package pl.sda.userservice;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentMatchers;
+import org.mockito.BDDMockito;
+import org.mockito.Mockito;
 
 import javax.security.auth.login.LoginContext;
 import java.util.HashMap;
@@ -100,6 +103,18 @@ public class UserServiceTest {
         userService.delete(LOGIN);
     }
 
+    @Test
+    public void shouldAddNotAddGivenLoginWhenNotValid() {
+        //given
+        Validator validator = Mockito.mock(Validator.class);
+        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.any())).willReturn(false);
 
+        //when
+        userService.add(LOGIN,FIRST_NAME,LAST_NAME);
+
+        //then
+        Assert.assertFalse(users.containsKey(LOGIN));
+    }
+    //should Add return exception when login not valid?
 
 }
