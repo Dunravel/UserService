@@ -17,6 +17,9 @@ class UserService {
     }
 
     Person read(String login) {
+        if(!users.containsKey(login)){
+            throw new LoginDoesNotExistException();
+        }
         return users.get(login);
     }
 
