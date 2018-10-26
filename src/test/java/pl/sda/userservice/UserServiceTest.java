@@ -27,10 +27,18 @@ public class UserServiceTest {
         userService = new UserService(users,validator);
     }
 
+    private void givenLoginIsValid() {
+        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
+    }
+
+    private void givenLoginIsNotValid() {
+        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.any())).willReturn(false);
+    }
+
     @Test
     public void shouldAddLogin(){
         //given
-        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
+        givenLoginIsValid();
         //when
         userService.add(LOGIN, FIRST_NAME, LAST_NAME);
 
@@ -43,7 +51,7 @@ public class UserServiceTest {
     @Test
     public void shouldReadReturnCorrectPersonDataForGivenLogin() {
         //given
-        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
+        givenLoginIsValid();
         userService.add("test","test","test");
         userService.add(LOGIN, FIRST_NAME, LAST_NAME);
         userService.add("test2","test2","test2");
@@ -66,11 +74,12 @@ public class UserServiceTest {
         //then
         Assert.assertTrue(new Person(FIRST_NAME,LAST_NAME).equals(users.get(LOGIN)));
     }
+    //should update name and last name separately? If yes, suggest separate methods for updating name and first name.
 
     @Test
     public void shouldDeleteRemoveGivenLogin() {
         //given
-        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
+        givenLoginIsValid();
         userService.add(LOGIN,FIRST_NAME,LAST_NAME);
 
         //when
@@ -83,7 +92,7 @@ public class UserServiceTest {
     @Test(expected = LoginAlreadyExistsException.class)
     public void shouldAddThrowExceptionWhenGivenLoginAlreadyExists(){
         //given
-        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
+        givenLoginIsValid();
         userService.add(LOGIN,FIRST_NAME,LAST_NAME);
 
         //when
@@ -109,7 +118,7 @@ public class UserServiceTest {
     @Test
     public void shouldAddNotAddGivenLoginWhenNotValid() {
         //given
-        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.any())).willReturn(false);
+        givenLoginIsNotValid();
 
         //when
         userService.add(LOGIN,FIRST_NAME,LAST_NAME);
