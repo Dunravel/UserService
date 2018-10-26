@@ -128,4 +128,12 @@ public class UserServiceTest {
     }
     //should Add return exception when login not valid?
 
+
+    @Test(expected = LoginDoesNotExistException.class)
+    public void shouldUpdateReturnExceptionWhenLoginDoesNotExist() {
+        //given
+
+        //when
+        userService.update(LOGIN,FIRST_NAME,LAST_NAME);
+    }
 }
