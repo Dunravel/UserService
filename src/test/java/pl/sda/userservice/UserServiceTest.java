@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class UserServiceTest {
 
-    public static final String LOGIN = "login";
-    public static final String FIRST_NAME = "name";
-    public static final String LAST_NAME = "last name";
+    private static final String LOGIN = "login";
+    private static final String FIRST_NAME = "name";
+    private static final String LAST_NAME = "last name";
 
     @Test
     public void shouldAddLogin(){
@@ -25,7 +25,7 @@ public class UserServiceTest {
         //then
         Assert.assertEquals(1, users.size());
         Assert.assertTrue(users.containsKey("login"));
-        Assert.assertTrue(new Person(FIRST_NAME,LAST_NAME).equals(users.get(LOGIN)));
+        Assert.assertTrue(new Person(FIRST_NAME, LAST_NAME).equals(users.get(LOGIN)));
 //        Assert.assertEquals("name",users.get("login").getFirstName());
 //        Assert.assertEquals("last name", users.get("login").getLastName());
     }
