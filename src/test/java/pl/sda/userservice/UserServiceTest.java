@@ -63,4 +63,16 @@ public class UserServiceTest {
         //then
         Assert.assertTrue(new Person(FIRST_NAME,LAST_NAME).equals(users.get(LOGIN)));
     }
+
+    @Test
+    public void shouldDeleteRemoveLoginAndUserData() {
+        //given
+        userService.add(LOGIN,FIRST_NAME,LAST_NAME);
+
+        //when
+        userService.delete(LOGIN);
+
+        //then
+        Assert.assertFalse(users.containsKey(LOGIN));
+    }
 }
