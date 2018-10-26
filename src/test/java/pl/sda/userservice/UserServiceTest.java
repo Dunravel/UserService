@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.security.auth.login.LoginContext;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,5 +75,14 @@ public class UserServiceTest {
 
         //then
         Assert.assertFalse(users.containsKey(LOGIN));
+    }
+
+    @Test(expected = LoginAlreadyExistsException.class)
+    public void shouldAddThrowExceptionWhenGivenLoginAlreadyExists(){
+        //given
+        userService.add(LOGIN,FIRST_NAME,LAST_NAME);
+
+        //when
+        userService.add(LOGIN,FIRST_NAME,LAST_NAME);
     }
 }
