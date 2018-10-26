@@ -4,16 +4,21 @@ import java.util.Map;
 
 class UserService {
     private Map<String,Person> users;
+    private Validator validator;
 
     UserService(Map<String, Person> users, Validator validator) {
         this.users = users;
+        this.validator = validator;
+
     }
 
     void add(String login, String name, String lastName) {
-        if(users.containsKey(login)){
-            throw new LoginAlreadyExistsException(login);
+        if(validator.loginIsValid(login)) {
+            if (users.containsKey(login)) {
+                throw new LoginAlreadyExistsException(login);
+            }
+            users.put(login, new Person(name, lastName));
         }
-        users.put(login,new Person(name,lastName));
     }
 
     Person read(String login) {

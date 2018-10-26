@@ -30,7 +30,7 @@ public class UserServiceTest {
     @Test
     public void shouldAddLogin(){
         //given
-
+        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
         //when
         userService.add(LOGIN, FIRST_NAME, LAST_NAME);
 
@@ -43,7 +43,7 @@ public class UserServiceTest {
     @Test
     public void shouldReadReturnCorrectPersonDataForGivenLogin() {
         //given
-
+        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
         userService.add("test","test","test");
         userService.add(LOGIN, FIRST_NAME, LAST_NAME);
         userService.add("test2","test2","test2");
@@ -70,6 +70,7 @@ public class UserServiceTest {
     @Test
     public void shouldDeleteRemoveGivenLogin() {
         //given
+        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
         userService.add(LOGIN,FIRST_NAME,LAST_NAME);
 
         //when
@@ -82,6 +83,7 @@ public class UserServiceTest {
     @Test(expected = LoginAlreadyExistsException.class)
     public void shouldAddThrowExceptionWhenGivenLoginAlreadyExists(){
         //given
+        BDDMockito.given(validator.loginIsValid(ArgumentMatchers.anyString())).willReturn(true);
         userService.add(LOGIN,FIRST_NAME,LAST_NAME);
 
         //when
