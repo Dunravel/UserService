@@ -18,6 +18,6 @@ class UserService {
     }
 
     void update(String login, String firstName, String lastName) {
-
+        users.put(login,new Person(firstName,lastName));
     }
 }
