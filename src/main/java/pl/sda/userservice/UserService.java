@@ -12,4 +12,8 @@ class UserService {
     void add(String login, String name, String lastName) {
         users.put(login,new Person(name,lastName));
     }
+
+    Person read(String login) {
+        return new Person(login,login);
+    }
 }

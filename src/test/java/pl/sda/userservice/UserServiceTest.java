@@ -30,4 +30,20 @@ public class UserServiceTest {
 //        Assert.assertEquals("last name", users.get("login").getLastName());
     }
 
+    @Test
+    public void shouldReadReturnCorrectPersonDataForGivenLogin() {
+        //given
+
+        Map<String,Person> users = new HashMap<>();
+        UserService userService = new UserService(users);
+        userService.add("test","test","test");
+        userService.add(LOGIN, FIRST_NAME, LAST_NAME);
+        userService.add("test2","test2","test2");
+
+        //when
+        Person person = userService.read(LOGIN);
+
+        //then
+        Assert.assertTrue(new Person(FIRST_NAME,LAST_NAME).equals(person));
+    }
 }
