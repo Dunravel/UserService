@@ -65,7 +65,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void shouldDeleteRemoveLoginAndUserData() {
+    public void shouldDeleteRemoveLogin() {
         //given
         userService.add(LOGIN,FIRST_NAME,LAST_NAME);
 
