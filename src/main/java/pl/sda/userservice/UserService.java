@@ -22,5 +22,6 @@ class UserService {
     }
 
     void delete(String login) {
+        users.remove(login);
     }
 }
