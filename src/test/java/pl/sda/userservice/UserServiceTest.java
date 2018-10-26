@@ -51,4 +51,16 @@ public class UserServiceTest {
         //then
         Assert.assertTrue(new Person(FIRST_NAME,LAST_NAME).equals(person));
     }
+
+    @Test
+    public void shouldUpdateChangePersonDataForGivenLogin() {
+        // given
+        userService.add(LOGIN,"test","test");
+
+        //when
+        userService.update(LOGIN,FIRST_NAME,LAST_NAME);
+
+        //then
+        Assert.assertTrue(new Person(FIRST_NAME,LAST_NAME).equals(users.get(LOGIN)));
+    }
 }

@@ -16,4 +16,8 @@ class UserService {
     Person read(String login) {
         return users.get(login);
     }
+
+    void update(String login, String firstName, String lastName) {
+
+    }
 }
