@@ -34,8 +34,6 @@ public class UserServiceTest {
         Assert.assertEquals(1, users.size());
         Assert.assertTrue(users.containsKey("login"));
         Assert.assertTrue(new Person(FIRST_NAME, LAST_NAME).equals(users.get(LOGIN)));
-//        Assert.assertEquals("name",users.get("login").getFirstName());
-//        Assert.assertEquals("last name", users.get("login").getLastName());
     }
 
     @Test
@@ -101,4 +99,7 @@ public class UserServiceTest {
         //when
         userService.delete(LOGIN);
     }
+
+
+
 }
