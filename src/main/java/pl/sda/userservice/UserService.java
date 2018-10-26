@@ -14,6 +14,6 @@ class UserService {
     }
 
     Person read(String login) {
-        return new Person(login,login);
+        return users.get(login);
     }
 }
