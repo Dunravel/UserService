@@ -28,6 +28,9 @@ class UserService {
     }
 
     void delete(String login) {
+        if(!users.containsKey(login)){
+            throw new LoginDoesNotExistException(login);
+        }
         users.remove(login);
     }
 }
